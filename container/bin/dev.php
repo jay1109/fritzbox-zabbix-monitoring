@@ -33,8 +33,8 @@ $client = new SoapClient(
 );
 $addonInfos = $client->GetAddonInfos();  
 $commonLinkProperties = $client->GetCommonLinkProperties();
-print($hostname . " totalBytesSent " . $addonInfos["NewTotalBytesSent"] . "\n");
-print($hostname . " totalBytesReceived " . $addonInfos["NewTotalBytesReceived"] . "\n");
+print($hostname . " totalBytesSent " . $addonInfos["NewX_AVM_DE_TotalBytesSent64"] . "\n");
+print($hostname . " totalBytesReceived " . $addonInfos["NewX_AVM_DE_TotalBytesReceived64"] . "\n");
 print($hostname . " layer1UpstreamMaxBitRate " . $commonLinkProperties["NewLayer1UpstreamMaxBitRate"] . "\n");
 print($hostname . " layer1DownstreamMaxBitRate " . $commonLinkProperties["NewLayer1DownstreamMaxBitRate"] . "\n");
 print($hostname . " physicalLinkStatus " . $commonLinkProperties["NewPhysicalLinkStatus"] . "\n");
