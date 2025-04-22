@@ -5,19 +5,19 @@ cd container
 function preperation() {
     sudo apt update
     sudo apt install -y dos2unix
-    dos2unix bin/*
+    dos2unix app/*
 }
 
 function buildGitHub() {
     echo $dockerhubkey | docker login --username $dockerusername --password-stdin
     docker buildx create --use --name builder --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6
-    docker buildx build -t pthoelken/fritzbox-zabbix-monitoring:latest --push --force-rm --no-cache --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6 -f Dockerfile .
+    docker buildx build -t jay110982/fritzbox-zabbix-monitoring:latest --push --force-rm --no-cache --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6 -f Dockerfile .
 }
 
 function buildLocal() {
     docker image prune -a -f
     docker buildx create --use --name builder --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6
-    docker buildx build -t pthoelken/fritzbox-zabbix-monitoring:$1 --push --force-rm --no-cache --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6 -f Dockerfile .
+    docker buildx build -t jay110982/fritzbox-zabbix-monitoring:$1 --push --force-rm --no-cache --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/arm/v6 -f Dockerfile .
     docker buildx rm builder
 }
 
